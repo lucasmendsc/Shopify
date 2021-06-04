@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->middleware(['auth.shopify'])->name('home');
+
+Route::group(['prefix' => '/usuario'], function () {
+    Route::get('/', 'App\Http\Controllers\UsuarioController@indexDeliveryController@login');
+    Route::post('/cadastrar', 'App\Http\Controllers\UsuarioController@create');
+});
+
+Route::get('/login', 'App\Http\Controllers\UsuarioController@index')->middleware(['auth.shopify'])->name('home');
+
+Route::get('/cadastro', function () {
+    return view('cadastro');
+})->middleware(['auth.shopify'])->name('cadastro');
