@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="Alcance, cursos, garanhuns,on-line, educação,presencial">
-    <meta charset="utf-8">
-    <title>Alance cursos</title>
-
-</head>
-
-<body>
-
-</html>
 @extends('shopify-app::layouts.default')
 
 @section('content')
