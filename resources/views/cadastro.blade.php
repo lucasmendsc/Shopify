@@ -1,19 +1,5 @@
-<html lang="pt-br">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Kodinger">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>After Sale | Cadastro</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-</head>
-
-<body class="my-login-page">
-
+@extends('default.layout')
     <section class="h-100">
         <div class="container h-100">
             <div class="row justify-content-md-center h-100">
@@ -68,7 +54,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center">
-                                    Already have an account? <a href="index.html">Login</a>
+                                    Already have an account? <a href="/login">Login</a>
                                 </div>
                             </form>
                         </div>
@@ -84,9 +70,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <script src="../js/my-login.js"></script>
-    <script src="../js/usuario.js"></script>
 
-</body>
-
-</html>

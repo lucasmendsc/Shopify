@@ -19,3 +19,27 @@ $("#cadastrar").click(function() {
         }
     });
 });
+
+$("#logar").click(function() {
+
+    let email = $('#email').val();
+    let senha = $('#senha').val();
+    let tk = $('#token').val();
+
+    $.ajax({
+        type: "POST",
+        url: "/usuario/logar",
+        data: {
+            _token: tk,
+            email: email,
+            senha: senha,
+        },
+        success: function(data) {
+
+            if (data) {
+                sessionStorage.setItem("id_usuario", data);
+                window.location.href = "/favoritos"
+            }
+        }
+    });
+});

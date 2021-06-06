@@ -20,13 +20,6 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        /*
-        $shopify = Auth::user();
-        $produtos = $shopify->api()->rest('GET', '/admin/api/2021-04/products.json');
-        $produtos = $produtos['body']['container']['produtos'];
-
-        echo print_r($produtos);
-        */
     }
 
     /**
@@ -42,6 +35,7 @@ class UsuarioController extends Controller
         $this->usuario->senha = $request->senha;
 
         $this->usuario->save();
+        unset($this->usuario);
     }
 
     /**
@@ -50,9 +44,18 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function logar(Request $request)
     {
-        //
+        $email = $request->email;
+        $senha = $request->senha;
+
+        $usuario = Usuario::where('email', $email)
+            ->where('senha', $senha)
+            ->first();
+
+        if (isset($usuario)) {
+            return $usuario->id;
+        }
     }
 
     /**
