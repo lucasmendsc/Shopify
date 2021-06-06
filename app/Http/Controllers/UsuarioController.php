@@ -36,6 +36,7 @@ class UsuarioController extends Controller
      */
     public function create(Request $request)
     {
+
         $this->usuario->nome = $request->nome;
         $this->usuario->email = $request->email;
         $this->usuario->senha = $request->senha;

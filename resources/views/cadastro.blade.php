@@ -4,40 +4,16 @@
     <meta charset="utf-8">
     <meta name="author" content="Kodinger">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>After Sale | Cadastro</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../../public/css/my-login.css">
-    <script src="jquery-3.5.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-    <script>
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $("#enviar").click(function() {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-                $.ajax({
-                    type: "POST",
-                    url: "/usuario/cadastrar",
-                    data: {
-                        nome: nome,
-                        email: email,
-                        senha: senha,
-                    },
-                    success: function(data) {
-                        console.log(data);
-                    }
-                });
-            });
-        });
-
-    </script>
 </head>
 
 <body class="my-login-page">
+
     <section class="h-100">
         <div class="container h-100">
             <div class="row justify-content-md-center h-100">
@@ -48,7 +24,7 @@
                     <div class="card fat">
                         <div class="card-body">
                             <h4 class="card-title">Register</h4>
-                            <form action="usuario/cadastrar" method="post">
+                            <form>
                                 <div class="form-group">
                                     <label for="nome">Name</label>
                                     <input id="nome" type="text" class="form-control" name="name" required autofocus>
@@ -85,11 +61,11 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                                 <div class="form-group m-0">
-                                    <button type="submit" id="cadastrar" class="btn btn-primary btn-block">
+                                    <div id="cadastrar" class="btn btn-primary btn-block">
                                         Register
-                                    </button>
+                                    </div>
                                 </div>
                                 <div class="mt-4 text-center">
                                     Already have an account? <a href="index.html">Login</a>
@@ -105,13 +81,11 @@
         </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="../js/my-login.js"></script>
+    <script src="../js/usuario.js"></script>
 
 </body>
 

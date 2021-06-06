@@ -12,6 +12,7 @@ $(document).ready(function() {
                 nome: nome,
                 email: email,
                 senha: senha,
+                _token: $('#_token').val(),
             },
             success: function(data) {
                 console.log(data);
