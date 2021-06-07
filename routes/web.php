@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->middleware(['auth.shopify'])->name('home');
+    return view('index');
+});
+
+Route::get('/cadastro', function () {
+    return view('cadastro');
+});
 
 Route::get('/login', function () {
     return view('login');
@@ -29,8 +33,9 @@ Route::group(['prefix' => '/usuario'], function () {
     Route::get('/', 'App\Http\Controllers\UsuarioController@indexDeliveryController@login');
     Route::post('/cadastrar', 'App\Http\Controllers\UsuarioController@create');
     Route::post('/logar', 'App\Http\Controllers\UsuarioController@logar');
+    Route::post('/favoritar', 'App\Http\Controllers\UsuarioController@logar');
 });
 
-Route::get('/cadastro', function () {
-    return view('cadastro');
-})->middleware(['auth.shopify'])->name('cadastro');
+Route::group(['prefix' => '/produtos'], function () {
+    Route::post('/favoritar', 'App\Http\Controllers\ProdutoController@create');
+});

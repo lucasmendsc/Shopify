@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Models\Favorito;
 
 class ProdutoController extends Controller
 {
 
-    public function __construct(){
-
+    public function __construct()
+    {
+        $this->favorito = new Favorito();
     }
     /**
      * Display a listing of the resource.
@@ -25,9 +27,13 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $this->favorito->id_usuario = $request->idUsuario;
+        $this->favorito->id_produto = $request->idProduto;
+
+        $this->favorito->save();
+        unset($this->favorito);
     }
 
     /**

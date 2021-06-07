@@ -1,36 +1,37 @@
 @extends('shopify-app::layouts.default')
-
-@section('content')
-    <!-- You are: (shop domain name) -->
-@endsection
-
-@section('scripts')
-    @parent
-
-    <script type="text/javascript">
-        var AppBridge = window['app-bridge'];
-        var actions = AppBridge.actions;
-        var TitleBar = actions.TitleBar;
-        var Button = actions.Button;
-        var Redirect = actions.Redirect;
-        var titleBarOptions = {
-            title: 'Welcome',
-        };
-        var myTitleBar = TitleBar.create(app, titleBarOptions);
-
-    </script>
-@endsection
-
+@extends('default.layout')
 
 <main>
     <section>
         <?php
         $shopify = Auth::user();
-        $produtos = $shopify->api()->rest('GET', '/admin/api/2021-04/products.json', ['limits' => 4]);
+        $produtos = $shopify->api()->rest('GET', '/admin/api/2021-04/products.json', ['limit' => 4]);
         $produtos = $produtos['body']['container']['products'];
-
-        echo print_r($produtos);
         ?>
+        <table class="table table-striped">
+            <thead>
+
+                <tr>
+                    <th>Nome</th>
+                    <th>Favoritar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($produtos as $prod) { ?>
+                <tr>
+                    <td>
+                        <?php echo $prod['title']; ?>
+                    </td>
+
+                    <td>
+                        <i class="fa fa-heart favorito-icon" onclick="favoritar('<?php echo $prod['id'] ?>')"></i>
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+        </div>
 
     </section>
 

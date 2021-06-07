@@ -42,4 +42,5 @@ $("#logar").click(function() {
             }
         }
     });
+
 });
