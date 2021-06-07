@@ -15,6 +15,7 @@
 <body>
     @yield('content')
     <script type="text/javascript" src="js/usuario.js"></script>
+    <script type="text/javascript" src="js/produto.js"></script>
 </body>
 
 </html>
