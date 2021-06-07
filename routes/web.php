@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware(['auth.shopify'])->name('favoritos');
 
 Route::get('/cadastro', function () {
     return view('cadastro');
@@ -33,7 +33,7 @@ Route::group(['prefix' => '/usuario'], function () {
     Route::get('/', 'App\Http\Controllers\UsuarioController@indexDeliveryController@login');
     Route::post('/cadastrar', 'App\Http\Controllers\UsuarioController@create');
     Route::post('/logar', 'App\Http\Controllers\UsuarioController@logar');
-    Route::post('/favoritar', 'App\Http\Controllers\UsuarioController@logar');
+    Route::get('/deslogar', 'App\Http\Controllers\UsuarioController@deslogar');
 });
 
 Route::group(['prefix' => '/produtos'], function () {

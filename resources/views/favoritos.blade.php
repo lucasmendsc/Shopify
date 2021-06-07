@@ -3,6 +3,16 @@
 
 <main>
     <section>
+        <script type="text/javascript">
+            let idUsuario = sessionStorage.getItem("id_usuario");
+
+            if (!idUsuario || idUsuario == "") {
+                alert("Acesso restrito a usuários logados!");
+                window.location.href = "/";
+            }
+
+        </script>
+
         <?php
         $shopify = Auth::user();
         $produtos = $shopify->api()->rest('GET', '/admin/api/2021-04/products.json', ['limit' => 4]);
@@ -24,7 +34,8 @@
                     </td>
 
                     <td>
-                        <i class="fa fa-heart favorito-icon" onclick="favoritar('<?php echo $prod['id'] ?>')"></i>
+                        <i class="fa fa-heart favorito-icon"
+                            onclick="favoritar('<?php echo $prod['id']; ?>')"></i>
                     </td>
                 </tr>
                 <?php } ?>

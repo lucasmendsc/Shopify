@@ -44,3 +44,7 @@ $("#logar").click(function() {
     });
 
 });
+
+function deslogar() {
+    sessionStorage.setItem("id_usuario", "");
+}

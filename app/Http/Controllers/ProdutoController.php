@@ -87,8 +87,15 @@ class ProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $idUsuario = $request->idUsuario;
+        $idProduto = $request->idProduto;
+
+        $favorito = Favorito::where('id_usuario', $idUsuario)
+            ->where('id_produto', $idProduto)
+            ->first();
+
+        $favorito->delete();
     }
 }
