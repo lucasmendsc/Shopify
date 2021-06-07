@@ -1,62 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Sobre o projeto
 
-## About Laravel
+Esse sistema foi projetado para cumprir o desafio solicitado. Acredito que esteja alinhado com o que foi pedido. As seguintes ferramentas foram utilizadas : 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Laravel](https://laravel.com/docs/routing).
+- [VSCode](https://code.visualstudio.com/).
+- [jQuery](https://jquery.com/download/).
+- [Shopify](https://shopify.dev/docs/admin-api/rest/reference/products/product#index-2020-01).
+- [ngrok](https://ngrok.com/).
+- [MySQL](https://www.mysql.com/).
+- [Chocolatey](https://chocolatey.org/) utilizado para facilitar o download de algumas ferramentas. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Dificuldades/problemas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Após vários testes e muito tempo tentando conectar as chaves `Chave da API:269a1ec67dfdd434dfc8622a0ed77768 || Senha: 4e788173c35d04421ab4793044be622f ` e chegando ao pensamento de que não era alguma falha no código, foi criada uma nova conta no Shopify para constatar se era ou não o código, e foi concluido que a conexão ocorria normalmente com a nova conta, não sendo possível conectar de forma alguma as credenciais passadas. 
 
-## Learning Laravel
+## Como executar
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Para executar este projeto, é necessário abrir a pasta do projeto pelo VSCode e rodar os seguintes comandos no terminal:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```javascript
+ngrok http 8000
+```
 
-## Laravel Sponsors
+- O ngrok irá rodar um script no seguinte formato : 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```javascript
+ngrok by @inconshreveable                                                                                                                   
+Session Status                online
+Session Expires               1 hour, 2 minutes
+Version                       2.3.40
+Region                        United States (us)
+Web Interface                 http://127.0.0.1:4040
+Forwarding                    http://937f11d45e6d.ngrok.io -> http://localhost:8000
+Forwarding                    https://937f11d45e6d.ngrok.io -> http://localhost:8000
 
-### Premium Partners
+Connections                   ttl     opn     rt1     rt5     p50     p90     
+```
+- e em outro terminal
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+```javascript
+php artisan serve
+```
 
-## Contributing
+- O php deverá rodar o seguinte script :
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```javascript
+Starting Laravel development server: http://127.0.0.1:8000
+[Mon Jun  7 01:35:19 2021] PHP 8.0.6 Development Server (http://127.0.0.1:8000) started
 
-## Code of Conduct
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- É necessário copiar a URL do segundo Forwarding do ngrok. `https://937f11d45e6d.ngrok.io` para o arquivo `.ENV` encontrado na raiz do projeto, e substituir o APP_URL por esta nova que acaba de ser gerada.
 
-## Security Vulnerabilities
+- O segundo passo consiste em fazer o Shopify rodar localmente, editando a APP URL e Allowed redirection URL(s) para a URL gerada pelo ngrok através do [Shopify](https://partners.shopify.com/2034357/apps/5370029/edit), com as seguintes credenciais : `e-mail: lucas.mends147@gmail.com | senha: Aftersale321 `.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Em seguida, podemos acessar o [App](https://after-sale-teste.myshopify.com/admin/apps/c5f91c6a7c98b2375ac8c26026ab24b0/?hmac=ae607b67d7666755c46651364bc454e8d37f34e7c22e8e9b7993bac0deaf4dc3&host=YWZ0ZXItc2FsZS10ZXN0ZS5teXNob3BpZnkuY29tL2FkbWlu&locale=en&new_design_language=true&session=e9e787932bcd29f8b00667822d5264cb866f0284172440502579785ddc83056f&shop=after-sale-teste.myshopify.com&timestamp=1623039360) com o mesmo e-mail e senha e o projeto já estará rodando por meio de um iFrame.
 
-## License
+`Houveram tentativas de rodar o código através do xampp em mais de uma máquina para facilitar o processo, mas o xampp apresentou conflitos com o Laravel e o Shopify. E este foi o único modo que foi encontrado para rodar o projeto perfeitamente.`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Erros comuns
+
+Caso o iFrame retorno este erro : 
+
+```javascript
+Failed to complete tunnel connection
+The connection to https://937f11d45e6d.ngrok.io was successfully tunneled to your ngrok client, but the client failed to establish a connection to the local address localhost:8000.
+
+Make sure that a web service is running on localhost:8000 and that it is a valid address.
+
+The error encountered was: dial tcp [::1]:8000: connectex: Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+```
+
+* Verificar se o comando `php artisan serve` está rodando perfeitamente no terminal.
+* Verificar o se o `.ENV` está com a APP_URL igual ao do Shopify.
+* Verificar o se o Shopify está com as URLs iguais as do ngrok.
+
+## Observações
+
+Não foi possível entregar todos os requisitos, regras e afins por conta do tempo escasso. Com o emprego atual de 44h semanais e faculdade à noite, o tempo foi relativamente curto para a entrega do projeto com todos os itens solicitados. 
