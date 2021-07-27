@@ -1,8 +1,6 @@
 
 ## Sobre o projeto
 
-Esse sistema foi projetado para cumprir o desafio solicitado. Acredito que esteja alinhado com o que foi pedido. As seguintes ferramentas foram utilizadas : 
-
 - [Laravel](https://laravel.com/docs/routing).
 - [VSCode](https://code.visualstudio.com/).
 - [jQuery](https://jquery.com/download/).
